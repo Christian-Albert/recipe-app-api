@@ -6,4 +6,6 @@ docker-compose run app sh -c "python manage.py startapp core"
 docker-compose run app sh -c "python manage.py makemigrations core"
 docker-compose run app sh -c "python manage.py migrate"
 
+docker-compose build
+
 git push origin
