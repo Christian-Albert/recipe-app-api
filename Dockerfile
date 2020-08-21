@@ -8,8 +8,15 @@ ENV PYTHONUNBUFFERED 1
 
 # Copy the requirements list from project root to Docker image root
 COPY ./requirements.txt /requirements.txt
-# Install all packages fromrequirements.txt file
+# Install the PostgreSQL client on the Docker system
+RUN apk add --update --no-cache postgresql-client
+# Install some temporary dependencies needed for installation
+RUN apk add --update --no-cache --virtual .tmp-build-deps \
+        gcc libc-dev linux-headers postgresql-dev
+# Install all packages from requirements.txt file using pip
 RUN pip install -r /requirements.txt
+# Delete the temporary dependencies
+RUN apk del .tmp-build-deps
 
 # Create empty app directory on Docker image and make it the working directory
 RUN mkdir /app
