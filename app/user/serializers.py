@@ -21,7 +21,7 @@ class AuthTokenSerializer(serializers.Serializer):
     '''Serializer for the user object authentication object'''
     email = serializers.CharField()
     password = serializers.CharField(
-        style={'input-type': 'password'},
+        style={'input_type': 'password'},
         trim_whitespace=False
     )
 
