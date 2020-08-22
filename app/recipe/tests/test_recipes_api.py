@@ -16,6 +16,7 @@ def detail_url(recipe_id):
     '''Return recipe detail URL'''
     return reverse('recipe:recipe-detail', args=[recipe_id])
 
+
 def sample_tag(user, name='Main course'):
     '''Create and return a sample tag'''
     return Tag.objects.create(user=user, name=name)
