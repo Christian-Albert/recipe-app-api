@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
@@ -190,7 +192,7 @@ class PrivateRecipeApiTests(TestCase):
         old_id = recipe.id
         payload = {
             'title': 'New Title',
-            'price': 33.00,
+            'price': Decimal('33.33'),
             'time_minutes': 99
         }
         url = detail_url(recipe.id)
